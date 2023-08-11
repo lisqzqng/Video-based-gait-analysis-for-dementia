@@ -1,7 +1,7 @@
 # Gait reconstruction: MAX-GRNet
 | Architecture                                                                                               |                                           
 |------------------------------------------------------------------------------------------------------------|
-| ![Architecture](https://github.com/lisqzqng/Video-based-gait-analysis-for-dementia/blob/main/MAX-GRNet.png)| 
+| ![Architecture](https://github.com/lisqzqng/Video-based-gait-analysis-for-dementia/blob/main/Full_MAX-GRNet.png)| 
 
 | Qualitative Result                                                                                         | 
 |------------------------------------------------------------------------------------------------------------| 
