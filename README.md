@@ -1,11 +1,11 @@
 # Gait reconstruction: MAX-GRNet
 | Architecture                                                                                               |                                           
 |------------------------------------------------------------------------------------------------------------|
-| ![Architecture](https://github.com/lisqzqng/Video-based-gait-analysis-for-dementia/blob/master/MAX-GRNet.png)| 
+| ![Architecture](https://github.com/lisqzqng/Video-based-gait-analysis-for-dementia/blob/main/MAX-GRNet.png)| 
 
 | Qualitative Result                                                                                         | 
 |------------------------------------------------------------------------------------------------------------| 
-| ![Qualitative Result](https://github.com/lisqzqng/Video-based-gait-analysis-for-dementia/blob/master/sample_with_skeleton.gif)|
+| ![Qualitative Result](https://github.com/lisqzqng/Video-based-gait-analysis-for-dementia/blob/main/sample_with_skeleton.gif)|
 
 ## Getting Started
 VPare has been implemented and tested on Ubuntu 20.04, GeForce RTX 3090 with python >= 3.7 and cuda >= 11.0. It supports both GPU and CPU inference.
