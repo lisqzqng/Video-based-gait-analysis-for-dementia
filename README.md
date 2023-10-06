@@ -56,8 +56,6 @@ python demo.py --vid_file sample_video.mp4 --output_folder output/ --ckpt checkp
 
 Refer to [`doc/demo.md`](doc/demo.md) for more details about the demo code.
 
-## Evaluations
-
 ## References
 This project mainly benefits from the following resources: 
   - Pretrained HMR and some functions are borrowed from [SPIN](https://github.com/nkolot/SPIN).
