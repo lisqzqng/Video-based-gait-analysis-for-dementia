@@ -1,5 +1,5 @@
 # Video-based-gait-analysis-for-dementia
-Human Pose Estimation from Video
+MAX-GRNet: Human Pose Estimation from Video
 | Architecture                                                                                               |                                           
 |------------------------------------------------------------------------------------------------------------|
 | ![Architecture](https://github.com/lisqzqng/Video-based-gait-analysis-for-dementia/blob/main/Full_MAX-GRNet.png)| 
