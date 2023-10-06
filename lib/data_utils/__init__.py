@@ -1,0 +1,1 @@
+MODE_SET = ['normal','masked','cropped']
