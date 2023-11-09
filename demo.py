@@ -63,7 +63,7 @@ def main(args):
     else:
         sys.exit("invalid input format.")
     os.makedirs(output_path, exist_ok=True)
-    ## convert video to images sequences
+    # convert video to images sequences
     if args.img_folder and os.path.isdir(args.img_folder):
         image_folder = args.img_folder
         num_frames = len(os.listdir(image_folder))
@@ -107,11 +107,7 @@ def main(args):
     model = GRNet(
         writer=None,
         seqlen=cfg.DATASET.SEQLEN,
-        n_iter=cfg.MAF.N_ITER,
-        use_max_encoder=cfg.MODEL.USE_MAX_ENCODER,
-        post_encode=cfg.MODEL.POST_ENCODE, # whether use reduced features for temporal encoding
-        GRID_ALIGN_Attn=cfg.MODEL.GRID_ALIGN_Attn,
-        new_part_attn=cfg.MODEL.NEW_PART_Attn,
+        featcorr=cfg.MODEL.FEAT_CORR,
     ).to(device)
     # ========= Load pretrained weights ========= #
     if args.ckpt and os.path.isfile(args.ckpt): 
@@ -407,7 +403,7 @@ if __name__ == '__main__':
     parser.add_argument('--output_folder', type=str, default='output/',
                         help='output folder to write results')
 
-    parser.add_argument('--detector', type=str, default='yolo', choices=['yolo', 'maskrcnn'],
+    parser.add_argument('--detector', type=str, default='yolo', choices=['yolo', ],
                         help='object detector to be used for bbox tracking')
 
     parser.add_argument('--yolo_img_size', type=int, default=416,

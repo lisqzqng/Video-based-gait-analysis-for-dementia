@@ -625,7 +625,7 @@ def get_cfg_defaults(pretrained, width=32, downsample=False, use_conv=False):
 
 def hrnet_w32(
         pretrained=True,
-        pretrained_ckpt='data/vpare_data/hrnet_w32.pth.tar',
+        pretrained_ckpt='data/grnet_data/hrnet_w32.pth.tar',
         use_conv=False,
 ):
     cfg = get_cfg_defaults(pretrained_ckpt, width=32, downsample=downsample, use_conv=use_conv)
@@ -634,7 +634,7 @@ def hrnet_w32(
 
 def hrnet_w48(
         pretrained=True,
-        pretrained_ckpt='data/vpare_data/pose_hrnet_w48_256x192.pth',
+        pretrained_ckpt='data/grnet_data/pose_hrnet_w48_256x192.pth',
         downsample=False,
         use_conv=False,
 ):
@@ -669,7 +669,7 @@ class Ident():
         return images
 
 def get_hrnet_encoder(
-    pretrained_ckpt='data/vpare_data/hrnet_w32.pth.tar',
+    pretrained_ckpt='data/grnet_data/hrnet_w32.pth.tar',
     downsample=False,
     use_conv=False):
     """

@@ -13,7 +13,6 @@ import torch
 from torch.utils.data import DataLoader
 
 from lib.core.config import update_cfg
-from lib.models.vpare import VPARE
 from lib.models.grnet import GRNet
 from lib.dataset.inference import Inference
 from lib.utils.demo_utils import video_to_images
@@ -32,7 +31,7 @@ M = 3 # minimum of credible joints in a frame
 MIN_sdiff = 0.01 # threshold for confidence score difference
 MAX_THRESH = 0.3 # threshold for 2D joint confidence score
 MIN_FDIFF = 10 # threshold for frame number difference between extracted images and precompted 2D joints
-MAX_seqlen = 400 # maximum feasible sequence length for regression in VPare models
+MAX_seqlen = 400 # maximum sequence length
 # maximum video numbers to be stored in one single output json, 
 # i.e. for 100 videos with MAX_VID=50, one will get two output json files.
 MAX_VID = 50 
@@ -64,7 +63,7 @@ def get_bbox_from_joints2d(kp_2d, smooth=False,threshold=0.1):
     h = lr[1] - ul[1]
     # c_x, c_y = ul[0] + w / 2, ul[1] + h / 2
     # =====>> use K-Medoids clustering
-    # IMPORTANT!!! assuming that the elderly does not move much throughout the video
+    # IMPORTANT!!! assuming that the subject does not move much throughout the video
     # one bounding box per subject for the entire video
     max_iter = 1000
     eps = 10.0
@@ -204,11 +203,8 @@ def prepare_data(
     model = GRNet(
         writer=None,
         seqlen=cfg.DATASET.SEQLEN,
-        n_iter=1,
-        use_max_encoder=False,
-        post_encode=True, # whether use reduced features for temporal encoding
-        GRID_ALIGN_Attn=True,
-        new_part_attn=True,
+        seqlen=cfg.DATASET.SEQLEN,
+        featcorr=cfg.MODEL.FEAT_CORR,
     ).to(device)
     # ========= Load pretrained weights ========= #
     if pretrained_file and os.path.isfile(pretrained_file): 

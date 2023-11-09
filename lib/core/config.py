@@ -20,113 +20,45 @@ from yacs.config import CfgNode as CN
 
 # CONSTANTS
 # You may modify them at will
-SMPL_DATA_DIR = 'data/vibe_data'
-AMASS_DIR = 'data/amass'
-INSTA_DIR = 'data/insta_variety'
-MPII3D_DIR = 'data/mpi_inf_3dhp'
-THREEDPW_DIR = 'data/3dpw'
-PENNACTION_DIR = 'data/penn_action'
-POSETRACK_DIR = 'data/posetrack'
-VIBE_DATA_DIR = 'data/vibe_data'
-H36M_DIR = 'data/h36m'
-VPARE_DATA_DIR = 'data/vpare_data'
+SMPL_DATA_DIR = 'data/smpl_data'
+GRNET_DATA_DIR = 'data/grnet_data'
 
 # Configuration variables
 cfg = CN()
 
 cfg.OUTPUT_DIR = 'results'
 cfg.EXP_NAME = 'default'
-cfg.DEBUG = True
 cfg.DEVICE = 'cuda'
 cfg.LOGDIR = ''
 cfg.NUM_WORKERS = 8
-cfg.DEBUG_FREQ = 1000
 cfg.SEED_VALUE = -1
-cfg.DEBUG_VID = []
 
 cfg.CUDNN = CN()
 cfg.CUDNN.BENCHMARK = True
 cfg.CUDNN.DETERMINISTIC = False
 cfg.CUDNN.ENABLED = True
 
-cfg.TRAIN = CN()
-# cfg.TRAIN.DATASETS_2D = ['Insta']
-cfg.TRAIN.DATASETS_2D = []
-cfg.TRAIN.DATASETS_3D = ['MPII3D']
-cfg.TRAIN.DATASET_EVAL = []
-cfg.TRAIN.BATCH_SIZE = 32
-cfg.TRAIN.DATA_2D_RATIO = 0.5
-cfg.TRAIN.START_EPOCH = 0
-cfg.TRAIN.END_EPOCH = 5
-cfg.TRAIN.PRETRAINED_REGRESSOR = ''
-cfg.TRAIN.PRETRAINED = ''
-cfg.TRAIN.RESUME = ''
-cfg.TRAIN.NUM_ITERS_PER_EPOCH = 1000
-cfg.TRAIN.LR_PATIENCE = 5
-
-cfg.TRAIN.MODE = 0
-cfg.TRAIN.VALID_MODE = 0
-
-# <====== generator optimizer
-cfg.TRAIN.GEN_OPTIM = 'Adam'
-cfg.TRAIN.GEN_LR = 1e-4
-cfg.TRAIN.GEN_WD = 1e-4
-cfg.TRAIN.GEN_MOMENTUM = 0.9
-
-# <====== motion discriminator optimizer
-cfg.TRAIN.MOT_DISCR = CN()
-cfg.TRAIN.MOT_DISCR.OPTIM = 'SGD'
-cfg.TRAIN.MOT_DISCR.LR = 1e-2
-cfg.TRAIN.MOT_DISCR.WD = 1e-4
-cfg.TRAIN.MOT_DISCR.MOMENTUM = 0.9
-cfg.TRAIN.MOT_DISCR.UPDATE_STEPS = 1
-cfg.TRAIN.MOT_DISCR.FEATURE_POOL = 'concat'
-cfg.TRAIN.MOT_DISCR.HIDDEN_SIZE = 1024
-cfg.TRAIN.MOT_DISCR.NUM_LAYERS = 1
-cfg.TRAIN.MOT_DISCR.ATT = CN()
-cfg.TRAIN.MOT_DISCR.ATT.SIZE = 1024
-cfg.TRAIN.MOT_DISCR.ATT.LAYERS = 1
-cfg.TRAIN.MOT_DISCR.ATT.DROPOUT = 0.1
-
+# <====== TODO training params
+# <====== inference params
 cfg.DATASET = CN()
-cfg.DATASET.SEQLEN = 20
-cfg.DATASET.OVERLAP = 0.5
+cfg.DATASET.SEQLEN = 100
 
-cfg.LOSS = CN()
-cfg.LOSS.KP_2D_W = 60.
-cfg.LOSS.KP_3D_W = 30.
-cfg.LOSS.SHAPE_W = 0.001
-cfg.LOSS.POSE_W = 1.0
-cfg.LOSS.E_MOTION_LOSS_W = 2.0
-cfg.LOSS.D_MOTION_LOSS_R = 1.0 # loss weight ratio D/G 
-#<====== angular loss
-cfg.LOSS.ANGULAR_W = 0.
-
+# <====== model params
 cfg.MODEL = CN()
+# body-part relationship encoding
+cfg.MODEL.PRETRAINED_PARE = osp.join(GRNET_DATA_DIR, 'pare_w_3dpw_checkpoint.ckpt')
+cfg.MODEL.BACKBONE_CKPT = osp.join(GRNET_DATA_DIR, 'hrnet_w32.pth.tar')
+# whether to use gait feature encoder
+cfg.MODEL.USE_GFEAT = True
+# feature correction module
+cfg.MODEL.FEAT_CORR = CN()
+cfg.MODEL.FEAT_CORR.AVG_DIM = 3 # number of outputs for averaged features
+cfg.MODEL.FEAT_CORR.ESTIM_PHASE = True
+cfg.MODEL.FEAT_CORR.NUM_LAYERS = 1
+cfg.MODEL.FEAT_CORR.H_SIZE = 1024
+cfg.MODEL.FEAT_CORR.NUM_HEADS = 4
+cfg.MODEL.FEAT_CORR.USE_JWFF = False
 
-cfg.MODEL.TEMPORAL_TYPE = 'gru'
-
-# GRU model hyperparams
-cfg.MODEL.TGRU = CN()
-cfg.MODEL.TGRU.NUM_LAYERS = 1
-cfg.MODEL.TGRU.ADD_LINEAR = False
-cfg.MODEL.TGRU.RESIDUAL = False
-cfg.MODEL.TGRU.HIDDEN_SIZE = 2048
-cfg.MODEL.TGRU.BIDIRECTIONAL = False
-
-# Vpare model params
-cfg.MODEL.USE_PART_ATT = False
-cfg.MODEL.PRETRAINED_PARE = osp.join(VPARE_DATA_DIR, 'pare_w_3dpw_checkpoint.ckpt')
-cfg.MODEL.BACKBONE_CKPT = osp.join(VPARE_DATA_DIR, 'hrnet_w32.pth.tar')
-cfg.MODEL.USE_POSE_TGRU = False
-cfg.MODEL.USE_SC_TGRU = False
-cfg.MODEL.PART = CN()
-cfg.MODEL.PART.USE_GRAD = False
-# GRNet model params
-cfg.MODEL.USE_MAX_ENCODER = False
-cfg.MODEL.POST_ENCODE = False # whether to use reduced feature map for encoding
-cfg.MODEL.GRID_ALIGN_Attn = False
-cfg.MODEL.NEW_PART_Attn = False
 
 def get_cfg_defaults():
     """Get a yacs CfgNode object with default values for my_project."""
