@@ -63,3 +63,19 @@ This project mainly benefits from the following resources:
   - SMPL models and layer is from [SMPL-X model](https://github.com/vchoutas/smplx).
   - GAN-based pose estimation structure is referred from [VIBE](https://github.com/mkocabas/VIBE).
   - Pretrained Part Attention model and structures are borrowed from [PARE](https://github.com/mkocabas/PARE).
+
+## Citation
+
+```
+@inproceedings{wang2023amai,
+  title={Video-based gait analysis for assessing Alzheimer’s Disease and Dementia with Lewy Bodies},
+  author={Wang, Diwei and Zouaoui, Chaima and Jang, Jinhyeok and Drira, Hassen and Seo, Hyewon},
+  booktitle={International Workshop on Applications of Medical AI},
+  pages={72--82},
+  year={2023},
+  organization={Springer}
+}
+```
+
+**Note:**
+This code is only used for **academic purposes**, people cannot use this code for anything that might be considered commercial use.
