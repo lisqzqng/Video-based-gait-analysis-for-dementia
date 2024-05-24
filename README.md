@@ -56,7 +56,7 @@ python demo.py --vid_file sample_video.mp4 --output_folder output/ --ckpt checkp
 
 Refer to [`doc/demo.md`](doc/demo.md) for more details about the demo code.
 ## Skeleton datasets of patients
-To obtain a copy of the Robertsau dataset, please carefully read and sign the Robertsau Dataset Release [Agreement](https://drive.google.com/file/d/1iNk3E3XGtLICvrYVV1DCorLHQERvgDAm/view?usp=sharing). Once you have signed the agreement, submit it to the designated contact email: d.wang@unistra.fr. Upon validation of your signed agreement, a copy of the dataset will be made available to you.
+To obtain a copy of the Robertsau dataset, please carefully read and sign the Robertsau Dataset Release Agreement(link to be added). Once you have signed the agreement, submit it to the designated contact email: d.wang@unistra.fr. Upon validation of your signed agreement, a copy of the dataset will be made available to you.
 
 ## References
 This project mainly benefits from the following resources: 
