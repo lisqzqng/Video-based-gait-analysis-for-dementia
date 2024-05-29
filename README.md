@@ -71,7 +71,7 @@ This project mainly benefits from the following resources:
 @inproceedings{wang2023amai,
   title={Video-based gait analysis for assessing Alzheimer’s Disease and Dementia with Lewy Bodies},
   author={Wang, Diwei and Zouaoui, Chaima and Jang, Jinhyeok and Drira, Hassen and Seo, Hyewon},
-  booktitle={International Workshop on Applications of Medical AI},
+  booktitle={MICCAI Workshop on Applications of Medical AI},
   pages={72--82},
   year={2023},
   organization={Springer}
