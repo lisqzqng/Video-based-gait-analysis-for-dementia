@@ -627,6 +627,7 @@ def hrnet_w32(
         pretrained=True,
         pretrained_ckpt='data/grnet_data/hrnet_w32.pth.tar',
         use_conv=False,
+        downsample=False,
 ):
     cfg = get_cfg_defaults(pretrained_ckpt, width=32, downsample=downsample, use_conv=use_conv)
     return get_pose_net(cfg, is_train=True)

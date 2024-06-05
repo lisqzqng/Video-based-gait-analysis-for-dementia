@@ -260,6 +260,7 @@ class PareHead(nn.Module):
                 return output
             else:
                 point_local_feat, cam_shape_feats = self._get_local_feats(smpl_feats, part_attention, output)
+                return point_local_feat, cam_shape_feats, output
         else:
             # already got the part/smpl_feats and part_attention_mask, apply the key_attention
             assert torch.is_tensor(output['smpl_feats']) and torch.is_tensor(output['part_attn'])
@@ -296,6 +297,7 @@ class PareHead(nn.Module):
             'pred_cam': pred_cam,
             'pred_shape': pred_shape,
             'pred_rot6d': pred_pose, # 6D rotation without normalization
+            'pred_pose': pred_rotmat,
         })
 
         return output

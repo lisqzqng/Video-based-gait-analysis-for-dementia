@@ -30,6 +30,8 @@ from lib.data_utils.img_utils import get_single_image_crop_demo
 from lib.utils.geometry import rotation_matrix_to_angle_axis
 
 
+MIN_NUM_FRAMES=25
+
 def preprocess_video(video, joints2d, bboxes, frames, scale=1.0, crop_size=224):
     """
     Read video, do normalize and crop it according to the bounding box.

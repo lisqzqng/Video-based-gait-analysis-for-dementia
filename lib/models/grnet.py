@@ -39,6 +39,8 @@ class GRNet(nn.Module):
         pretrained_hrnet=osp.join(GRNET_DATA_DIR,'hrnet_w32.pth.tar'),
         use_gait_feat=False,
         featcorr=None,
+        use_pose_encoder=False,
+        use_shpcam_encoder=False,
     ):
         super(GRNet, self).__init__()
         self.focal_length = focal_length
