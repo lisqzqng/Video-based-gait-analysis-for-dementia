@@ -20,3 +20,9 @@ scikit-image
 scikit-learn
 packaging==23.1
 chumpy==0.70
+numba
+filterpy
+timm
+pyglet==1.5.28
+-e git+https://github.com/mkocabas/multi-person-tracker.git#egg=multi_person_tracker
+-e git+https://github.com/mkocabas/yolov3-pytorch.git#egg=yolov3_pytorch
