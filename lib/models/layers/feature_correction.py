@@ -8,7 +8,7 @@ from typing import NewType, Optional
 from dataclasses import dataclass, asdict, fields
 from timm.models.layers import trunc_normal_
 from lib.models.layers import LocallyConnected2d
-from lib.models.layers.attention_utils import LocomotivePE, TSAttnBlock, PositionalEncoding
+from lib.models.layers.attention_utils import TSAttnBlock, PositionalEncoding
 from lib.models.layers.gait_feat_encoder import BidirectionalModel
 
 fun_normalize = lambda x: x/(torch.norm(x,dim=-1,keepdim=True)+1e-12)
